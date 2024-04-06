@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+    }
+
+    .main {
+        width: 50%;
+        height: 93vh;
+        margin-left: 500px;
+        background-color: rgb(138, 193, 248);
+        margin-top: 20px;
+        box-shadow: 10px 10px 10px 10px solid gray;
+
+    }
+
+    .mini {
+        width: 40%;
+        height: 50vh;
+
+        margin-left: 50px;
+        margin-top: 15px;
+
+
+    }
+
+    table {
+        height: 400px;
+        width: 350px;
+        text-align: center;
+        margin-left: 500px;
+        background-color: wheat;
+    }
+
+    label {
+        font-size: 20px;
+        color: black;
+        margin-left: 200px;
+
+    }
+
+    input {
+        margin-left: 200px;
+        height: 2vh;
+        background-color: wheat;
+
+    }
+
+    button {
+
+        height: 5vh;
+        background-color: rgb(0, 149, 255);
+        color: white;
+        font-size: 20px;
+        padding: 5px;
+        border-color: rgb(0, 149, 255);
+        margin-left: 600px;
+        margin-top: 10px;
+        width: 40%;
+    }
+
+    h1 {
+        margin-left: 750px;
+        color: rgb(0, 146, 224);
+
+    }
+</style>
+
+<body>
+    <h1>Students Online Calculating Programme </h1>
+
+    <div class="main">
+
+        <div class="mini">
+
+            <label for="">English</label><br>
+            <input type="number" id="mark1"><br><br>
+            <label for="">Maths</label><br>
+            <input type="number" id="mark2"><br><br>
+            <label for="">Urdu</label><br>
+            <input type="number" id="mark3"><br><br>
+            <label for="">Physics</label><br>
+            <input type="number" id="mark4"><br> <br>
+            <label for="">Computer</label><br>
+            <input type="number" id="mark5"><br><br>
+            <label for="">Islamiyat</label><br>
+            <input type="number" id="mark6"><br><br>
+
+
+            <div class="result">
+                <table border="1" cellspacing="0" sty>
+                    <tr style="width: 70%;">
+                        <td style="width: 70%;">Total Marks</td>
+                        <td>600</td>
+
+                    </tr>
+                    <tr>
+                        <td>Obtained marks</td>
+                        <td class="display" id="obtain"></td>
+
+                    </tr>
+                    <tr>
+                        <td>Percentage</td>
+                        <td class="display" id="per"></td>
+
+                    </tr>
+                    <tr>
+                        <td>Average</td>
+                        <td class="display" id="avg"></td>
+
+                    </tr>
+                    <tr>
+                        <td>Grade</td>
+                        <td class="display" id="grade"></td>
+
+                    </tr>
+                    <tr>
+                        <td>Remarks</td>
+                        <td class="display" id="remarks"></td>
+
+                    </tr>
+
+                </table>
+                <button onclick="cal()">show result</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function cal() {
+            let eng = parseInt(document.getElementById("mark1").value);
+            let maths = parseInt(document.getElementById("mark2").value);
+            let physics = parseInt(document.getElementById("mark3").value);
+            let urdu = parseInt(document.getElementById("mark4").value);
+            let comp = parseInt(document.getElementById("mark5").value);
+            let isl = parseInt(document.getElementById("mark6").value);
+            let sum = eng + maths + physics + urdu + comp + isl;
+            if (eng > 100 || maths > 100 || physics > 100 || urdu > 100 || comp > 100 || isl > 100) {
+                alert("Enter marks less then 101 ");
+            }
+
+            else {
+                document.getElementById("obtain").innerText = sum;
+                let per = sum / 600 * 100;
+                document.getElementById("per").innerText = per;
+                let average1 = sum / 6;
+                document.getElementById("avg").innerText = average1;
+                if (per >= 80 && per <= 100) {
+                    document.getElementById("grade").innerHTML = "<span style='color:Green';>A-One</sapn>"
+                }
+                else if (per >= 70 && per < 80) {
+                    document.getElementById("grade").innerHTML = "<span style='color:Green';>A</sapn>";
+                }
+                else if (per >= 60 && per < 70) {
+                    document.getElementById("grade").innerHTML = "<span style='color:Green';>B</sapn>";
+                }
+                else if (per >= 50 && per < 60) {
+                    document.getElementById("grade").innerHTML = "<span style='color:green';>C</sapn>";
+                }
+                else if (per >= 40 && per < 50) {
+                    document.getElementById("grade").innerHTML = "<span style='color:Green';>D</sapn>"
+                }
+                else {
+                    document.getElementById("grade").innerHTML = "<span style='color:Red';>F</sapn>";
+
+                }
+
+                if (per > 40) {
+                    document.getElementById("remarks").innerHTML = "<span style='color:Green';>Pass</sapn>";;
+                }
+                else {
+                    document.getElementById("remarks").innerHTML = "<span style='color:Red';>Fail</sapn>";
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
